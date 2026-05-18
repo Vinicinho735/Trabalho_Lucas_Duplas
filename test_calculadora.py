@@ -40,3 +40,12 @@ def test_divisao_por_zero():
     calc = Calculadora()
     with pytest.raises(ValueError):
         calc.divisao(10, 0)
+
+def test_historico():
+    calc = Calculadora()
+    calc.soma(5, 5)
+    calc.subtracao(10, 2)
+    # Verifica se as duas operações foram salvas
+    assert len(calc.historico) == 2
+    assert calc.historico[0] == "5 + 5 = 10"
+    assert calc.historico[1] == "10 - 2 = 8"
